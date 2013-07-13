@@ -11,12 +11,9 @@
 	<properties>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<slf4j.version>1.6.4</slf4j.version>
-<<<<<<< HEAD
-=======
 		<joda.time.version>2.2</joda.time.version>
 		<jackson.version>2.2.2</jackson.version>
 		<jetty.version>7.6.1.v20120215</jetty.version>
->>>>>>> f7b8b5b... Pre-configurated Spring MVC
 	</properties>
 
 	<dependencies>
@@ -38,8 +35,6 @@
 			<version>1</version>
 		</dependency>
 
-<<<<<<< HEAD
-=======
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
@@ -52,7 +47,6 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
->>>>>>> f7b8b5b... Pre-configurated Spring MVC
 		<!-- Log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
