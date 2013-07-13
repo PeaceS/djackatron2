@@ -5,6 +5,10 @@ public class Account {
 	private Long id;
 	private Double amount;
 
+	public Account(){
+		
+	}
+	
 	public String getName() {
 		return name;
 	}

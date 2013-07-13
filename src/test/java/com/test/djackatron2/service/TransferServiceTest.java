@@ -15,7 +15,7 @@ public class TransferServiceTest {
 	public void TestTransferService() {
 		//given
 		double feeRate = 5d;
-		double amountTransfer = 30.0d;
+		double amountTransfer = 45.0d;
 		long srcAccId = 1;
 		long desAccId = 2;
 		
@@ -43,7 +43,7 @@ public class TransferServiceTest {
 		
 		//then
 		assertThat(desAccount.getAmount(), equalTo(amountTransfer));
-		assertThat(srcAccount.getAmount(), equalTo(65d));
+		assertThat(srcAccount.getAmount(), equalTo(50d));
 	}
 
 }

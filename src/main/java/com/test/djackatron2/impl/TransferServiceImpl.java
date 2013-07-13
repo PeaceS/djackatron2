@@ -22,12 +22,16 @@ public class TransferServiceImpl implements TransferService {
 	}
 
 	@Override
-	public void transfer(double d, long srcAccId, long desAccId) {
+	public void transfer(double amountTransfer, long srcAccId, long desAccId) {
+		double amount;
+		
 		Account srcAcc = accountRepo.find(srcAccId);
-		srcAcc.setAmount(65d);
+		amount = srcAcc.getAmount() - (amountTransfer + this.feeAmount);
+		srcAcc.setAmount(amount);
 		
 		Account desAcc = accountRepo.find(desAccId);
-		desAcc.setAmount(30d);
+		amount = desAcc.getAmount() + amountTransfer;
+		desAcc.setAmount(amount);
 	}
 
 }
