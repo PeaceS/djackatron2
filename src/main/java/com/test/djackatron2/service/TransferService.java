@@ -11,4 +11,6 @@ public interface TransferService {
 	
 	void setMinimumTransferAmount(double amount);
 
+	void setTimeService(TimeService timeService);
+
 }

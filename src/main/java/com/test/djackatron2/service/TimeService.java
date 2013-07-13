@@ -11,7 +11,7 @@ public class TimeService {
 		this.timeStop = timeStop;
 	}
 
-	public boolean working() {
+	public boolean checkWorking() {
 		LocalTime current = new LocalTime();
 		current.toDateTimeToday();
 		

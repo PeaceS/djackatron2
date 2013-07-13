@@ -39,10 +39,14 @@ public class TransferServiceTest {
 		AccountRepository accountRepository = mock(AccountRepository.class);
 		when(accountRepository.find(srcAccId)).thenReturn(srcAccount);
 		when(accountRepository.find(desAccId)).thenReturn(desAccount);
+			//Mock TimeService class, always return true, for method checkWorking()
+		TimeService timeService = mock(TimeService.class);
+		when(timeService.checkWorking()).thenReturn(true);
 			//Implement TransferService, add FeeCalculate and AccountRepository object
 		service = new TransferServiceImpl();
 		service.setFeeAmount(feeAmount);
 		service.setAccountRepository(accountRepository);
+		service.setTimeService(timeService);
 		
 	}
 	
@@ -54,10 +58,45 @@ public class TransferServiceTest {
 		
 		//when
 		service.transfer(amountTransfer, srcAccId, desAccId);
-		
+				
 		//then
 		assertThat(desAccount.getAmount(), equalTo(amountTransfer));
 		assertThat(srcAccount.getAmount(), equalTo(expectedOutput));
 	}
+	
+	@Test
+	public void testTransferWithTimeService() {
+		//given
+		double amountTransfer = 10d;
+		double expectedOutput = 85d;
+		
+		TimeService timeService = mock(TimeService.class);
+		when(timeService.checkWorking()).thenReturn(true);
+		service.setTimeService(timeService);
+		
+		//when
+		service.transfer(amountTransfer, srcAccId, desAccId);
+		
+		//then
+		verify(timeService).checkWorking();
+		assertThat(desAccount.getAmount(), equalTo(amountTransfer));
+		assertThat(srcAccount.getAmount(), equalTo(expectedOutput));
+	}
 
+	@Test(expected=OutOfServiceException.class)
+	public void testTransferWithTimeOutOfService() {
+		//given
+		double amountTransfer = 10d;
+		
+		TimeService timeService = mock(TimeService.class);
+		when(timeService.checkWorking()).thenReturn(false);
+		service.setTimeService(timeService);
+		
+		//when
+		service.transfer(amountTransfer, srcAccId, desAccId);
+		
+		//then
+		verify(timeService).checkWorking();
+		fail();
+	}
 }

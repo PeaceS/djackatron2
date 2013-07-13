@@ -13,14 +13,14 @@ public class TimeServiceTest {
 		LocalTime timeStart, timeStop;
 		
 		timeStart = new LocalTime(16, 0);
-		timeStop = new LocalTime(17, 30);
+		timeStop = new LocalTime(22, 30);
 		timeService.setOfficeHours(timeStart, timeStop);
-		assertTrue(timeService.working());
+		assertTrue(timeService.checkWorking());
 		
 		timeStart = new LocalTime(5, 0);;
 		timeStop = new LocalTime(16, 55);
 		timeService.setOfficeHours(timeStart, timeStop);
-		assertFalse(timeService.working());
+		assertFalse(timeService.checkWorking());
 	}
 
 }
