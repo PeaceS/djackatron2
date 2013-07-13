@@ -6,19 +6,27 @@ import org.junit.Test;
 
 import com.test.djackatron2.impl.FeeCalculateImpl;
 
-public class FeeCalculatePolicy {
+public class FeeCalculateTest {
 
 	@Test
 	public void TestCalculateFixFee() {
 		//given
 		double feeAmount = 7.0d;
+		double output;
 		FeeCalculate service = new FeeCalculateImpl(feeAmount);
 		
 		//when
-		double input,output;
-		input = 150.0d;
-		output = service.feeCalculate(input);
+		output = service.feeCalculate(15.0d);
+		//then
+		assertTrue(output == feeAmount);
 
+		//when
+		output = service.feeCalculate(150.0d);
+		//then
+		assertTrue(output == feeAmount);
+
+		//when
+		output = service.feeCalculate(1500.0d);
 		//then
 		assertTrue(output == feeAmount);
 	}
