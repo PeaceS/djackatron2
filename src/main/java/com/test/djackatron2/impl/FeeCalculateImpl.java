@@ -11,7 +11,15 @@ public class FeeCalculateImpl implements FeeCalculate {
 
 	@Override
 	public double feeCalculate(double input) {
-		return this.feeAmount;
+		double output;
+		if(input <= 1000d){
+			output = 0d;
+		}else if(input <= 1000000d){
+			output = input * 0.01;
+		}else{
+			output = 20000d;
+		}
+		return output;
 	}
 
 }

@@ -27,7 +27,8 @@ public class TransferServiceImpl implements TransferService {
 	public void transfer(double amountTransfer, long srcAccId, long desAccId) {
 		double amount;
 		double feeRate = this.feeAmount.feeCalculate(amountTransfer);
-
+		System.out.println(feeRate);
+		//Handle tests
 		if(amountTransfer <= 0d){
 			throw new IllegalArgumentException();
 		}
@@ -37,6 +38,7 @@ public class TransferServiceImpl implements TransferService {
 			//Handle source account, get fee to include
 		Account srcAcc = accountRepo.find(srcAccId);
 		amount = srcAcc.getAmount() - (amountTransfer + feeRate);
+		
 		if(amount < 0d){
 			throw new InsufficientFundException();
 		}
