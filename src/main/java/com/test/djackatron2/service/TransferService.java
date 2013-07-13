@@ -8,5 +8,7 @@ public interface TransferService {
 	void setAccountRepository(AccountRepository accountRepository);
 
 	void setFeeAmount(FeeCalculate feeAmount);
+	
+	void setMinimumTransferAmount(double amount);
 
 }
