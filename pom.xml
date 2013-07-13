@@ -3,20 +3,26 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.test</groupId>
 	<artifactId>djackatron2</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>djackatron2</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<spring.version>3.2.0.RELEASE</spring.version>
+		<spring.version>3.2.3.RELEASE</spring.version>
 		<slf4j.version>1.6.4</slf4j.version>
+<<<<<<< HEAD
+=======
+		<joda.time.version>2.2</joda.time.version>
+		<jackson.version>2.2.2</jackson.version>
+		<jetty.version>7.6.1.v20120215</jetty.version>
+>>>>>>> f7b8b5b... Pre-configurated Spring MVC
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 			<exclusions>
 				<exclusion>
@@ -32,6 +38,21 @@
 			<version>1</version>
 		</dependency>
 
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda.time.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+>>>>>>> f7b8b5b... Pre-configurated Spring MVC
 		<!-- Log -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -49,6 +70,21 @@
 			<version>${slf4j.version}</version>
 		</dependency>
 
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -77,6 +113,17 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
+				<configuration>
+					<!-- <scanIntervalSeconds>10</scanIntervalSeconds> -->
+					<webAppConfig>
+						<contextPath>/djackatron2</contextPath>
+					</webAppConfig>
 				</configuration>
 			</plugin>
 		</plugins>
