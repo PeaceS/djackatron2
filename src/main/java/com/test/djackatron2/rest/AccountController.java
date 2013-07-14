@@ -1,6 +1,8 @@
 package com.test.djackatron2.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,11 +14,12 @@ import com.test.djackatron2.service.AccountRepository;
 @RequestMapping("/account")
 public class AccountController {
 
+	@Autowired
 	private AccountRepository repository;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, value="/{accId}")
 	@ResponseBody
-	public Account getOne(Long accId) {
+	public Account getOne(@PathVariable Long accId) {
 		return repository.find(accId);
 	}
 
