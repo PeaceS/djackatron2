@@ -7,7 +7,21 @@ public class AccountRepositoryImpl implements AccountRepository {
 
 	@Override
 	public Account find(long srcAccId) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Account create(Account account) {
+		return null;
+	}
+
+	@Override
+	public Account update(Account account) {
+		return null;
+	}
+
+	@Override
+	public Account delete(Long accId) {
 		return null;
 	}
 

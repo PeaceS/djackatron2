@@ -5,8 +5,12 @@ public class Account {
 	private Long id;
 	private Double amount;
 
-	public Account(){
-		
+	public Account(){}
+	
+	public Account(long id, String name, double amount){
+		this.id = id;
+		this.name = name;
+		this.amount = amount;
 	}
 	
 	public String getName() {
